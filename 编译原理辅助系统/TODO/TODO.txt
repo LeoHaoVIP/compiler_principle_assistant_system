@@ -1,0 +1,39 @@
+﻿1. 化简后的MFA多余状态的去除
+2. 化简后的MFA状态编号重新排列，同时更新初态和终态集		OK
+3. RegularExpression To NFA									OK
+4. RegularExpression Verification							OK
+5. NFA TO DFA												OK
+6. DFA TO MFA												OK
+7. RE TO NFA算法检查										OK
+8. 更新闭包运算												OK
+9. MFA继续化简_消除多余状态
+10. 给定符号串，判断得到的DFA能否识别该符号串
+11. 消除无用状态->更新初态集和终态集，删除其中的无用状态	OK
+12. 消除多余状态->更新初态集和终态集，删除其中的多余状态
+
+注意：
+本程序能够满足除NFA.nfa之外的所有测试样例
+由于DFA转MFA时，未完全去除多余等价状态，因此对NFA.nfa生成的MFA含有多余状态
+
+
+20181206↓LL1预测分析
+0. 文法的分解(例如：S->A|B，改写为S->A;S->B)				OK
+1. 判断给定的非终结符能否推出空串							OK
+2. 计算给定非终结符的First集								OK
+3. 计算给定符号串的First集									OK
+4. 计算给定非终结符的Follow集								OK	
+5. 计算给定产生式的Select集									OK
+6. 判断给定的文法是否为LL1型文法							OK
+7. 构造预测分析表											OK
+8. 根据预测分析表构造分析过程								OK
+9. 构造可视化表格出问题 20181208							OK
+10.更新First算法											OK
+11.Select集构造问题解决20181209								OK
+12. 文件保存模块											OK
+
+20181211↓LR0分析
+1. 构造识别活前缀的NFA20181211								OK					
+2. 注意：XFA转换、LL1、LR0中空串已统一用$表示				OK
+3. 构造识别活前缀的MFA										OK
+4. 可视化显示状态集信息										OK
+5. 创建LR分析过程，返回ListViewItem[]						OK

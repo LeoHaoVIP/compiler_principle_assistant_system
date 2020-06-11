@@ -1,0 +1,772 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Northwoods.Go.Pdf</name>
+    </assembly>
+    <members>
+        <member name="T:Northwoods.Go.Pdf.GoPdfGenerator">
+            <summary>
+            Draws a <see cref="T:Northwoods.Go.GoObject"/>.  Each <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/> is associated with a specific derivative
+            of GoObject via the <see cref="P:Northwoods.Go.Pdf.GoPdfGenerator.Type"/> property, and must be registered with the
+            <see cref="T:Northwoods.Go.Pdf.GoPdfWriter"/> being used.  Generators for all types of standard GoObjects are
+            provided, and can be registered by calling <see cref="M:Northwoods.Go.Pdf.GoPdfWriter.RegisterStandardGenerators"/>.
+            Custom GoObjects may need a custom generator.  Custom drawing can be performed by calling any of
+            a set of predefined drawing functions, which take a specified Pen and/or Brush, and coordinates
+            in <see cref="T:Northwoods.Go.GoDocument"/> coordinates.
+            </summary>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.RenderObject(Northwoods.Go.GoObject)">
+            <summary>
+            Modifies a data stream representing the <paramref name="obj"/> in the PDF document.
+            </summary>
+            <param name="obj">The <see cref="T:Northwoods.Go.GoObject"/> to be rendered.</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawLine(System.Drawing.Pen,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draws a line.
+            </summary>
+            <param name="pen">The pen with which the line is drawn</param>
+            <param name="x1">The x coordinate of the first endpoint</param>
+            <param name="y1">The y coordinate of the first endpoint</param>
+            <param name="x2">The x coordinate of the second endpoint</param>
+            <param name="y2">The y coordinate of the second endpoint</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawLine(System.Drawing.Pen,System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>
+            Draws a line.
+            </summary>
+            <param name="pen">The pen with which the line is drawn</param>
+            <param name="start">The first endpoint</param>
+            <param name="end">The second endpoint</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawBezier(System.Drawing.Pen,System.Drawing.Brush,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draws a cubic Bezier curve.
+            </summary>
+            <param name="pen">The pen with which to draw the curve</param>
+            <param name="brush">The brush with which to draw the curve</param>
+            <param name="sx">The x coordinate of the start point</param>
+            <param name="sy">The y coordinate of the start point</param>
+            <param name="cx1">The x coordinate of the first control point point</param>
+            <param name="cy1">The y coordinate of the first control point point</param>
+            <param name="cx2">The x coordinate of the second control point</param>
+            <param name="cy2">The y coordinate of the second control point</param>
+            <param name="ex">The x coordinate of the end point</param>
+            <param name="ey">The y coordinate of the end point</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawBezier(System.Drawing.Pen,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>
+            Draws a cubic Bezier curve.
+            </summary>
+            <param name="pen">The pen with which to draw the curve</param>
+            <param name="brush">The brush with which to draw the curve</param>
+            <param name="start">The start point</param>
+            <param name="c1">The first control point</param>
+            <param name="c2">The second control point</param>
+            <param name="end">The end point</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawPath(System.Drawing.Pen,System.Drawing.Brush,System.Drawing.Drawing2D.GraphicsPath)">
+            <summary>
+            Draws a GraphicsPath object.
+            </summary>
+            <param name="pen">The pen with which to draw the path</param>
+            <param name="brush">The brush with which to draw the path</param>
+            <param name="path">The path to draw</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawRectangle(System.Drawing.Pen,System.Drawing.Brush,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draws a rectangle.
+            </summary>
+            <param name="pen">The pen with which to draw the rectangle</param>
+            <param name="brush">The brush with which to draw the rectangle</param>
+            <param name="x">The x coordinate of the top left corner of the rectangle</param>
+            <param name="y">The y coordinate of the top left corner of the rectangle</param>
+            <param name="w">The width of the rectangle</param>
+            <param name="h">The height of the rectangle</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawRectangle(System.Drawing.Pen,System.Drawing.Brush,System.Drawing.RectangleF)">
+            <summary>
+            Draws a rectangle.
+            </summary>
+            <param name="pen">The pen with which to draw the rectangle</param>
+            <param name="brush">The brush with which to draw the rectangle</param>
+            <param name="rect">The rectangle to draw</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawRoundedRectangle(System.Drawing.Pen,System.Drawing.Brush,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draws a rectangle with rounded corners.
+            </summary>
+            <param name="pen">The pen with which to draw the rounded rectangle</param>
+            <param name="brush">The brush with which to draw the rounded rectangle</param>
+            <param name="x">The x coordinate of the top left corner of the rectangle</param>
+            <param name="y">The y coordinate of the top left corner of the rectangle</param>
+            <param name="w">The width of the rectangle</param>
+            <param name="h">The height of the rectangle</param>
+            <param name="rx">The x radius of the corners</param>
+            <param name="ry">The y radius of the corners</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawRoundedRectangle(System.Drawing.Pen,System.Drawing.Brush,System.Drawing.RectangleF,System.Drawing.SizeF)">
+            <summary>
+            Draws a rectangle with rounded corners.
+            </summary>
+            <param name="pen">The pen with which to draw the rounded rectangle</param>
+            <param name="brush">The brush with which to draw the rounded rectangle</param>
+            <param name="rect">The rectangle to draw</param>
+            <param name="corner">A SizeF object containing the x and y radii of the rounded corners</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawEllipse(System.Drawing.Pen,System.Drawing.Brush,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draws an ellipse.
+            </summary>
+            <param name="pen">The pen with which to draw the ellipse</param>
+            <param name="brush">The brush with which to draw the ellipse</param>
+            <param name="cx">The x coordinate of the center of the ellipse</param>
+            <param name="cy">The y coordinate of the center of the ellipse</param>
+            <param name="rx">The x radius of the ellipse</param>
+            <param name="ry">The y radius of the ellipse</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawEllipse(System.Drawing.Pen,System.Drawing.Brush,System.Drawing.RectangleF)">
+            <summary>
+            Draws an ellipse.
+            </summary>
+            <param name="pen">The pen with which to draw the ellipse</param>
+            <param name="brush">The brush with which to draw the ellipse</param>
+            <param name="rect">The rectangle bounding the ellipse</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawLines(System.Drawing.Pen,System.Drawing.Brush,System.Boolean,System.Collections.Generic.IEnumerable{System.Drawing.PointF})">
+            <summary>
+            Draws line segments connecting a series of points.
+            </summary>
+            <param name="pen">The pen with which to draw the lines</param>
+            <param name="brush">The brush with which to draw the lines</param>
+            <param name="closed">Specifies whether the line segments form a closed path (i.e., the last point is connected to the first one via a line segment)</param>
+            <param name="points">The points between which the line segments are drawn</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawLines(System.Drawing.Pen,System.Drawing.Brush,System.Boolean,System.Drawing.PointF[])">
+            <summary>
+            Draws line segments connecting a series of points.
+            </summary>
+            <param name="pen">The pen with which to draw the lines</param>
+            <param name="brush">The brush with which to draw the lines</param>
+            <param name="closed">Specifies whether the line segments form a closed path (i.e., the last point is connected to the first one via a line segment)</param>
+            <param name="points">The points between which the line segments are drawn</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawText(System.Drawing.Brush,System.String,System.Drawing.Font,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Draws text on a single line.
+            </summary>
+            <param name="brush">The brush with which to draw the text</param>
+            <param name="text">The text to be drawn</param>
+            <param name="font">The font in which to draw the text</param>
+            <param name="x">The x coordinate of the top left corner of the text</param>
+            <param name="y">The y coordinate of the top left corner of the text</param>
+            <param name="rightToLeft">Set to true for right to left text</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawText2(System.Drawing.Brush,System.Drawing.Color,System.String,System.Drawing.Font,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Draws text on a single line.
+            </summary>
+            <param name="brush">The brush with which to draw the text</param>
+            <param name="text">The text to be drawn</param>
+            <param name="textColor">The Color to be drawn</param>
+            <param name="font">The font in which to draw the text</param>
+            <param name="x">The x coordinate of the top  corner of the text</param>
+            <param name="y">The y coordinate of the top  corner of the text</param>
+            <param name="rx">The x coordinate of the rotation point of the text</param>
+            <param name="ry">The y coordinate of the rotation point of the text</param>
+            <param name="angle">The angle to draw the text</param>
+            <param name="rightTo">Set to true for right to  text</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawText(Northwoods.Go.GoText)">
+            <summary>
+            Draws text as specified by a <see cref="T:Northwoods.Go.GoText"/> object.
+            </summary>
+            <param name="txt">The <see cref="T:Northwoods.Go.GoText"/> object to draw</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawImage(System.Drawing.Bitmap,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draws a Bitmap.
+            </summary>
+            <param name="img">The bitmap to be drawn</param>
+            <param name="x">The x coordinate of the top left corner of the image</param>
+            <param name="y">The x coordinate of the top left corner of the image</param>
+            <param name="w">The width of the drawn image</param>
+            <param name="h">The height of the drawn image</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawImage(System.Drawing.Bitmap,System.Drawing.RectangleF)">
+            <summary>
+            Draws a Bitmap.
+            </summary>
+            <param name="img">The Bitmap to be drawn</param>
+            <param name="rect">The rectangle into which the Bitmap is drawn</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfGenerator.DrawGoObject(Northwoods.Go.GoObject)">
+            <summary>
+            Draws a <see cref="T:Northwoods.Go.GoObject"/>.
+            </summary>
+            <param name="obj">The <see cref="T:Northwoods.Go.GoObject"/> to be drawn</param>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfGenerator.Writer">
+            <summary>
+            Gets the GoPdfWriter that is rendering with this generator.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfGenerator.Type">
+            <summary>
+            The GoObject type drawn by the instance of <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/>
+            </summary>
+        </member>
+        <member name="T:Northwoods.Go.Pdf.GoPdfWriter">
+            <summary>
+            This is the basic class for generating a PDF file
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfWriter.UnitsPerIn">
+            <summary>
+            Defines the size of a "unit" when drawing Foreground/Background decorations.
+            </summary>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.Generate(System.String)">
+            <summary>
+            Writes a PDF file to disk
+            </summary>
+            <param name="path">The pathname of the PDF</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.Generate(System.IO.Stream)">
+            <summary>
+            Writes a PDF to the specified stream.
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.displayString(System.Text.StringBuilder,System.Drawing.Font,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="stream">The StringBuilder</param>
+            <param name="f">The font</param>
+            <param name="text">The string of text</param>
+            /// <param name="R2L">Right to Left text</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.MapFont(System.Drawing.Font)">
+            <summary>
+            Maps Font objects to the 14 standard PDF fonts.
+            </summary>
+            <param name="font"></param>
+            <returns>One of the 14 standard PDF fonts.</returns>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.PaintBackgroundDecoration(Northwoods.Go.Pdf.GoPdfGenerator,Northwoods.Go.Pdf.GoPdfPageInfo)">
+            <summary>
+            Draw per-page decorations, watermark, page numbers, etc... Cordinates are expressed in units of 1/72 inch, with (0,0) denoting
+            the top left corner.
+            </summary>
+            <param name="gen">A <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/> object whose drawing functions can be called to add decorations to the page.</param>
+            <param name="info">A set of values for various attributes of the page.</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.PaintForegroundDecoration(Northwoods.Go.Pdf.GoPdfGenerator,Northwoods.Go.Pdf.GoPdfPageInfo)">
+            <summary>
+            Draw per-page decorations, watermark, page numbers, etc... Cordinates are expressed in units of 1/72 inch, with (0,0) denoting
+            the top left corner.
+            </summary>
+            <param name="gen">A <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/> object whose drawing functions can be called to add decorations to the page.</param>
+            <param name="info">A set of values for various attributes of the page.</param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.RegisterStandardGenerators">
+            <summary>
+            Registers the predefined <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/>s except for <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/>.
+            </summary>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.RegisterGenerator(Northwoods.Go.Pdf.GoPdfGenerator)">
+            <summary>
+            associate a <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/> with a Type
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.FindGenerator(System.Type)">
+            <summary>
+            returns a <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/> associated with the given Type or its base types, or else null
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfWriter.GetGenerator(System.Type)">
+            <summary>
+            returns a <see cref="T:Northwoods.Go.Pdf.GoPdfGenerator"/> associated with the given Type, or null
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Scale">
+            <summary>
+            The number of PDF units corresponding to a single <see cref="T:Northwoods.Go.GoDocument"/> unit.  72 PDF
+            units correspond to an inch.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.RendersBackground">
+            <summary>
+            Specifies whether the <see cref="P:Northwoods.Go.Pdf.GoPdfWriter.View"/>'s background color should be drawn.  Default is false.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.RendersGrid">
+            <summary>
+            Specifies whether the <see cref="P:Northwoods.Go.Pdf.GoPdfWriter.View"/>'s Grid should be rendered, if it exists.  Default is false.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.RendersFullPage">
+            <summary>
+            Specifies whether the Background color and grid, if drawn, should extend to the margins of the pages.  Default is false.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.RenderTemporaryObjects">
+            <summary>
+            Specifies whether temporary objects (e.g. adornments, tooltips,...) should be rendered.  Default is false.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.RendersShadows">
+            <summary>
+            Controls whether <see cref="T:Northwoods.Go.GoObject"/>s with shadows will have a shadow rendered onto the document
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Landscape">
+            <summary>
+            Specifies the orientation of the diagram when printed onto a page.  If true, means that the longer dimension of the page should be
+            horizontal for the y-axis of the diagram to be vertical.  Default is false.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.MajorRows">
+            <summary>
+            True if pages are numbered such that a row consists of consecutive page numbers, false if pages are numbered such that columns
+            consist of consecutive page numbers.  Default is true.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.CompressContentStreams">
+            <summary>
+            Specifies whether the document's content streams should be compressed to reduce file size.
+            </summary>
+            <remarks>Images will be compressed regardless of the value of this property</remarks>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Metadata">
+            <summary>
+            Specifies general information about the PDF document, such as Author, Title, Date of creation, etc...
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Alignment">
+            <summary>
+            Controls how the diagram should be rendered if there is more space than needed (e.g., whether it should be stretched to fill the pages, whether it should be centered,...)
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Padding">
+            <summary>
+            The minimum distances (in inches) between the bounds of the diagram and tha pages' margins.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Margins">
+            <summary>
+            The minimum printable distances (in inches) from the sides ofn a page.  This property determines
+            the pages' trim box.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.View">
+            <summary>
+            The <see cref="T:Northwoods.Go.GoView"/> whose contents are drawn.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Bounds">
+            <summary>
+            Only <see cref="T:Northwoods.Go.GoObject"/>s within these bounds will be added to the PDF document.
+            </summary>
+            <remarks>If NaN or Infinity, no restrictions based on location are used.</remarks>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.Objects">
+            <summary>
+            The <see cref="T:Northwoods.Go.GoObject"/>s to be drawn onto the PDF Document.
+            </summary>
+            <remarks>If null, All <see cref="T:Northwoods.Go.GoObject"/>s will be rendered.</remarks>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfWriter.PageSize">
+            <summary>
+            The size, in inches, of a page.
+            </summary>
+        </member>
+        <member name="T:Northwoods.Go.Pdf.GoPdfFont">
+            <summary>
+            Represents the 14 standard PDF fonts that can be substituded for an intended font if the
+            intended font can't be embedded.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.NoSubstitution">
+            <summary>
+            Indicates that no substitution should be made, and the PDF should assume the specified font is installed.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.TimesRoman">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.TimesBold">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.TimesItalic">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.TimesBoldItalic">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.Helvetica">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.HelveticaBold">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.HelveticaOblique">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.HelveticaBoldOblique">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.Courier">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.CourierBold">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.CourierOblique">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.CourierBoldOblique">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.Symbol">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfFont.ZapfDingbats">
+            <summary>
+            A standard PDF font.
+            </summary>
+        </member>
+        <member name="T:Northwoods.Go.Pdf.GoPdfMargins">
+            <summary>
+            Represents distances from the edges of a page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMargins.Left">
+            <summary>
+            The size, in inches, of the left margin.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMargins.Right">
+            <summary>
+            The size, in inches, of the right margin.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMargins.Top">
+            <summary>
+            The size, in inches, of the top margin.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMargins.Bottom">
+            <summary>
+            The size, in inches, of the bottom margin.
+            </summary>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfMargins.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of <see cref="T:Northwoods.Go.Pdf.GoPdfMargins"/> based on the parameter values.
+            </summary>
+            <param name="Left"></param>
+            <param name="Top"></param>
+            <param name="Right"></param>
+            <param name="Bottom"></param>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfMargins.#ctor(System.Single)">
+            <summary>
+            Creates an instance of PdfMargins with the same margin size on every side
+            </summary>
+            <param name="all">The size of the margins</param>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMargins.Empty">
+            <summary>
+            An instance of PdfMargins specifying a margin size of zero on each side.
+            </summary>
+        </member>
+        <member name="T:Northwoods.Go.Pdf.GoPdfAlignment">
+            <summary>
+            Flags specifying how extra space is dealt with.  Horizontal and vertical alignments are separate, and a combination
+            of horizontal alignment and vertical alignment can be specified as HorizontalAlignment|VerticalAlignment
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfAlignment.Center">
+            <summary>
+            Indicates that the drawing should be centered in the available space.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfAlignment.Left">
+            <summary>
+            A horizontal alignment flag indicating that the drawing should be as far to the left as posible
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfAlignment.Right">
+            <summary>
+            A horizontal alignment flag indicating that the drawing should be as far to the roght as possible
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfAlignment.Top">
+            <summary>
+            A vertical alignment flag indicating that the drawing should be as far to the top as possible.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfAlignment.Bottom">
+            <summary>
+            A vertical alignment flag indicating that the drawing should be as far to the bottom as possible.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfAlignment.HStretch">
+            <summary>
+            A horizontal flag indicating the drawing should be stretched to occupy the entirety of the available horizontal space.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfAlignment.VStretch">
+            <summary>
+            A vertical flag indicating the drawing should be stretched to occupy the entirety of the available vertical space.
+            </summary>
+        </member>
+        <member name="T:Northwoods.Go.Pdf.GoPdfMetadata">
+            <summary>
+            Represents general information about a PDF document.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMetadata.Title">
+            <summary>
+            The title of the resulting PDF document.  A value of null means the document has no title.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMetadata.DateCreated">
+            <summary>
+            The date/time at which the document is created.  The default value is the current date/time.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMetadata.DateModified">
+            <summary>
+            The date/time at which the document was last modified.  The default value is the current date/time.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMetadata.Author">
+            <summary>
+            The authors of the PDF document
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMetadata.Producer">
+            <summary>
+            The producer of the PDF document
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfMetadata.Subject">
+            <summary>
+            The subject of the document.
+            </summary>
+        </member>
+        <member name="T:Northwoods.Go.Pdf.GoPdfPageInfo">
+            <summary>
+            Contains values for various attributes of a page in a PDF document.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.Column">
+            <summary>
+            Gets a one-based index of the current page in the total ColumnCount of pages to be printed for each row.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.ColumnCount">
+            <summary>
+            Gets the total number of pages to be printed in each row.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.Count">
+            <summary>
+            Gets the total number of pages to be printed.  
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.View">
+            <summary>
+            Gets a reference to the GoView being printed
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.Index">
+            <summary>
+            Gets a one-based index of the current page in the total Count of pages to be printed.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.PageBounds">
+            <summary>
+            Gets the bounds, in document coordinates, of the whole page being printed.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.Row">
+            <summary>
+            Gets a one-based index of the current page in the total RowCount of pages to be printed for each column.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.RowCount">
+            <summary>
+            Gets the total number of pages to be printed in each column.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.ScaleX">
+            <summary>
+            Gets the actual scale at which the diagram is being printed.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.ScaleY">
+            <summary>
+            Gets the actual scale at which the diagram is being printed.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.Size">
+            <summary>
+            Gets the size of the current page, in device-independent pixels.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.TotalDocumentBounds">
+            <summary>
+            Gets the bounds, in document coordinates, of the total area of the diagram being printed.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.Viewport">
+            <summary>
+            Gets the size and location of the diagram area (within the margins), in device-independent pixels.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.ViewportBounds">
+            <summary>
+            Gets the bounds, in document coordinates, of the area being printed for this page.
+            </summary>
+        </member>
+        <member name="P:Northwoods.Go.Pdf.GoPdfPageInfo.Matrix">
+            <summary>
+            A matrix mapping the Document's coord. system to that of the pdf page
+            </summary>
+        </member>
+        <member name="T:Northwoods.Go.Pdf.GoPdfPageSizes">
+            <summary>
+            A collection of several common paper sizes
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A_Letter">
+            <summary>
+            Represents an 8.5"x11" page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.Legal">
+            <summary>
+            Represents an 8.5"x14" page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.B_Ledger">
+            <summary>
+            Represents an 11"x17" page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.SuperB">
+            <summary>
+            Represents a 13"x19" page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.C">
+            <summary>
+            Represents a 17"x22" page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.D">
+            <summary>
+            Represents a 22"x34" page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.E">
+            <summary>
+            Represents a 34"x44" page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A5">
+            <summary>
+            Represents a 148mmx210mm page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A4">
+            <summary>
+            Represents a 210mmx297mm page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A3">
+            <summary>
+            Represents a 297mmx420mm page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A3Plus">
+            <summary>
+            Represents a 329mmx284mm page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A2">
+            <summary>
+            Represents a 420mmx594mm page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A1">
+            <summary>
+            Represents a 594mmx841mm page.
+            </summary>
+        </member>
+        <member name="F:Northwoods.Go.Pdf.GoPdfPageSizes.A0">
+            <summary>
+            Represents a 849mmx1189mm page.
+            </summary>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfPageSizes.CustomInches(System.Single,System.Single)">
+            <summary>
+            Creates a SizeF in inches given dimensions in inches.
+            </summary>
+            <param name="w">The width of the page in inches</param>
+            <param name="h">The height of the page in inches</param>
+            <returns>A SizeF representing the size of the page</returns>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfPageSizes.CustomCentimeters(System.Single,System.Single)">
+            <summary>
+            Creates a SizeF in centimeters given dimensions in centimeters.
+            </summary>
+            <param name="w">The width of the page in centimeters</param>
+            <param name="h">The height of the page in centimeters</param>
+            <returns>A SizeF representing the size of the page</returns>
+        </member>
+        <member name="M:Northwoods.Go.Pdf.GoPdfPageSizes.CustomMillimeters(System.Single,System.Single)">
+            <summary>
+            Creates a SizeF in millimeters given dimensions in millimeters.
+            </summary>
+            <param name="w">The width of the page in millimeters</param>
+            <param name="h">The height of the page in millimeters</param>
+            <returns>A SizeF representing the size of the page</returns>
+        </member>
+    </members>
+</doc>
