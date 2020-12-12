@@ -1,0 +1,6 @@
+S->(L)|aP
+P->S|$
+L->,SD
+D->SD|$
+S->(L)|aS|a
+L->L,S|S

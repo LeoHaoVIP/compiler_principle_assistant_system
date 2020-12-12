@@ -167,10 +167,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="test_set\NFA_to_DFA\DFA.dfa" />
+    <None Include="test_set\NFA_to_DFA\dfa_1.dfa" />
+    <None Include="test_set\NFA_to_DFA\dfa_3.dfa" />
+    <None Include="test_set\NFA_to_DFA\dfa_4.dfa" />
+    <None Include="test_set\NFA_to_DFA\dfa_5.dfa" />
+    <None Include="test_set\NFA_to_DFA\NFA.nfa" />
+    <None Include="test_set\NFA_to_DFA\nfa_1.nfa" />
+    <None Include="test_set\NFA_to_DFA\nfa_2.dfa" />
+    <None Include="test_set\NFA_to_DFA\nfa_2.nfa" />
+    <None Include="test_set\NFA_to_DFA\nfa_3.nfa" />
+    <None Include="test_set\NFA_to_DFA\nfa_4.nfa" />
+    <None Include="test_set\NFA_to_DFA\nfa_5.nfa" />
     <None Include="编译原理辅助系统_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="test_set\LL1\LL1_1.TXT" />
+    <Content Include="test_set\LL1\LL1_2.TXT" />
+    <Content Include="test_set\LL1\LL1_3.TXT" />
+    <Content Include="test_set\LL1\LL1_4.TXT" />
+    <Content Include="test_set\LL1\LL1_5.TXT" />
+    <Content Include="test_set\LR0\LR_1.TXT" />
+    <Content Include="test_set\LR0\LR_2.TXT" />
+    <Content Include="test_set\LR0\LR_3.TXT" />
+    <Content Include="test_set\LR0\LR_4.TXT" />
     <Content Include="TODO\TODO.txt" />
   </ItemGroup>
   <ItemGroup>
